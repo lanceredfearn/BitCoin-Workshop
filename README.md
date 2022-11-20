@@ -4,7 +4,7 @@ This project is a modified version of the Satoshi Workbench. The React applicati
 in the Home directory of the container.
 
 To avoid long sync times, download the data folder and copy it into the root of the project:
-https://utexas.box.com/s/vxe7ipk1ak0ucbzhk01l5mnm8v0bdonl
+https://utexas.box.com/s/5up5wo5vfyuydqafv8bkelhzf2z0be2p
 
 ```
 To start the container:

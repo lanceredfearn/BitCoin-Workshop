@@ -6,7 +6,7 @@ services:
     image: bitcoind:latest
     ## entrypoint: console
     ## command: --prune=1000
-    container_name: bitcoind
+    container_name: bitcoind-test
     env_file: .env.sample
     hostname: bitcoind
     init: true
