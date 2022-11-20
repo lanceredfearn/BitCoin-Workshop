@@ -20,5 +20,7 @@ apt install openjdk-11-jdk-headless -y &&
 
 apt install npm -y &&
 
-npm --prefix frontend/ start &
+npm --prefix /root/home/fronteend install &&
+
+npm --prefix /root/home/frontend/ start &
 
