@@ -1,3 +1,25 @@
+# BitCoin Workbench
+
+This project is a modified version of the Satoshi Workbench. The React application (frontend) is located
+in the Home directory of the container.
+
+To avoid long sync times, download the data folder and copy it into the root of the project:
+https://utexas.box.com/s/vxe7ipk1ak0ucbzhk01l5mnm8v0bdonl
+
+```
+To start the container:
+
+    docker compose up
+
+To login to the container:
+
+    docker exec -it bitcoind bash
+    
+    *** If you login to the container immediately after starting it, you will see the
+    JDK and NPM being downloaded.
+```
+
+
 # Satoshi Workbench
 
 A docker workbench environment, pre-configured for running bitcoind.
