@@ -6,6 +6,7 @@ alias bcli="bitcoin-cli --chain=$NETWORK"
 
 ## Useful for checking open sockets.
 alias listen='lsof -i -P -n | grep LISTEN'
+alias bc='bitcoin-cli -testnet'
 
 ## Shortcuts to logfiles.
 debug() { 

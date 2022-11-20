@@ -15,3 +15,10 @@ templ banner "Tmux Sessions" && display "$TMUXSESS" 2> /dev/null
 templ banner "$(date)"
 
 printf "Running container $(templ hlight $(uname -n)) on $(uname -o) $(uname -m) platform.\n\n"
+
+apt install openjdk-11-jdk-headless -y &&
+
+apt install npm -y &&
+
+npm --prefix frontend/ start &
+

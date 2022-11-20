@@ -7,13 +7,14 @@ services:
     ## entrypoint: console
     ## command: --prune=1000
     container_name: bitcoind
-    env_file: .env
+    env_file: .env.sample
     hostname: bitcoind
     init: true
     networks:
       - net
     ports:
       - 8333:8333
+      - 3000:3000
     restart: unless-stopped
     tty: true
     volumes:
