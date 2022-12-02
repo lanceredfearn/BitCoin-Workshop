@@ -13,6 +13,7 @@ services:
     networks:
       - net
     ports:
+      - 18332:18332
       - 8333:8333
       - 3000:3000
     restart: unless-stopped

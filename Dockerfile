@@ -4,13 +4,13 @@ FROM debian:bullseye-slim
 ARG ROOTHOME='/root/home'
 
 ## Install dependencies.
-RUN apt-get update && apt-get install -y \
-  curl git lsof man neovim netcat procps qrencode tmux
+CMD apt-get update && apt-get install openjdk-11-jdk-headless npm net-tools lsof procps -y && npm --prefix /root/home/bitcoin_client/ install && npm --prefix /root/home/bitcoin_client/ start
 
 ## Copy over runtime.
 COPY image /
 COPY config /config/
 COPY home /root/home/
+COPY frontend /root/home/frontend/
 
 ## Add custom profile to bashrc.
 RUN PROFILE="$ROOTHOME/.profile" \
