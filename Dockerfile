@@ -4,13 +4,12 @@ FROM debian:bullseye-slim
 ARG ROOTHOME='/root/home'
 
 ## Install dependencies.
-CMD apt-get update && apt-get install openjdk-11-jdk-headless npm net-tools lsof procps -y && npm --prefix /root/home/bitcoin_client/ install && npm --prefix /root/home/bitcoin_client/ start
+RUN apt-get update && apt-get install openjdk-11-jdk-headless npm net-tools lsof procps iputils-ping -y
 
 ## Copy over runtime.
 COPY image /
 COPY config /config/
 COPY home /root/home/
-COPY frontend /root/home/frontend/
 
 ## Add custom profile to bashrc.
 RUN PROFILE="$ROOTHOME/.profile" \
@@ -22,6 +21,6 @@ RUN PROFILE="$ROOTHOME/.profile" \
 ## Setup Environment.
 ENV PATH="$ROOTHOME/bin:/root/.local/bin:$PATH"
 
-WORKDIR /root/home
+WORKDIR /root/home/
 
 ENTRYPOINT [ "entrypoint" ]

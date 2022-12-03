@@ -25,3 +25,6 @@ echo "Executing $CMD with params:"
 for param in $PARAMS; do echo $param; done && echo
 
 $CMD $PARAMS
+
+cd /root/home/backend/backend_controller/ && ./gradlew bootRun
+
