@@ -4,7 +4,7 @@ FROM debian:bullseye-slim
 ARG ROOTHOME='/root/home'
 
 ## Install dependencies.
-RUN apt-get update && apt-get install openjdk-11-jdk-headless npm net-tools lsof procps iputils-ping -y
+RUN apt-get update && apt-get install openjdk-17-jdk-headless npm net-tools lsof procps iputils-ping -y
 
 ## Copy over runtime.
 COPY image /
@@ -22,5 +22,6 @@ RUN PROFILE="$ROOTHOME/.profile" \
 ENV PATH="$ROOTHOME/bin:/root/.local/bin:$PATH"
 
 WORKDIR /root/home/
+
 
 ENTRYPOINT [ "entrypoint" ]

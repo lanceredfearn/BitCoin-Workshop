@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
-/root/home/backend/backend_controller/gradlew bootRun
+cd /root/home/backend &&
+
+./gradlew bootRun
 
 echo "STARTING THE BACKEND CONTROLLER"
