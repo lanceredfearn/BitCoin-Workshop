@@ -1,6 +1,5 @@
 package backend;
 
-import org.apache.tomcat.jni.Proc;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 @RestController
 @CrossOrigin("*")
-public class GetBalance {
+public class WalletController {
 
     String getWalletInfo = "bitcoin-cli " + "--testnet " + "getwalletinfo";
     String getNewAddress = "bitcoin-cli " + "--testnet " + "getnewaddress";
