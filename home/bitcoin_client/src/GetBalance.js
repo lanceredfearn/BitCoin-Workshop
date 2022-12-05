@@ -36,19 +36,14 @@ export const GetBalance = ({walletBalance, isClicked}) => {
                         fontWeight: 700,
                         color: 'inherit',
                         textDecoration: 'none',
-                        justifyItems: 'center',
                         justifyContent: 'center'
                     }}>
                         <h1 sx={{textAlign: 'center'}}>
-                            {walletBalance.walletname}
+                            Wallet
                         </h1>
                         <Divider/>
                     </Typography>
-                        {Object.keys(walletBalance).map((key, index) => {
-                            console.log(key, walletBalance[key])
-                            return <CardValues key={index} name={key} value={walletBalance[key]}>
-                            </CardValues>
-                        })}
+                    <CardValues walletBalance={walletBalance}/>
                 </>
                 :
                 <Typography sx={{

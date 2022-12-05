@@ -1,3 +1,11 @@
 .env
 build
 data
+.idea
+postgres-data
+sql
+home/backend/.gradle
+home/backend/build
+home/bitcoin_client/.idea
+home/bitcoin_client/node_modules
+

@@ -13,6 +13,7 @@ public class WalletController {
 
     String getWalletInfo = "bitcoin-cli " + "--testnet " + "getwalletinfo";
     String getNewAddress = "bitcoin-cli " + "--testnet " + "getnewaddress";
+    String listReceivedByAddress = "bitcoin-cli " + "--testnet " + "listreceivedbyaddress " + "0 " + "true";
 
     @PostMapping("/getbalance")
     public String getBalance() throws IOException {
@@ -49,4 +50,23 @@ public class WalletController {
 
         return returnNewAddress;
     }
+
+    @PostMapping("/receivedbyaddress")
+    public Object receivedByAddress() throws IOException {
+
+        String returnAllAddresses = "";
+
+        ProcessBuilder listReceived = new ProcessBuilder(listReceivedByAddress.split(" "));
+        Process process = listReceived.start();
+
+        Scanner sc = new Scanner(process.getInputStream());
+        System.out.println(listReceivedByAddress);
+
+        while (sc.hasNext()) {
+            returnAllAddresses += sc.nextLine().toString();
+        }
+
+        return returnAllAddresses;
+    }
+
 }
