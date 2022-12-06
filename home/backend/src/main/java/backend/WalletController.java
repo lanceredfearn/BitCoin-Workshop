@@ -1,8 +1,9 @@
 package backend;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.apache.tomcat.util.json.JSONParser;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -67,6 +68,26 @@ public class WalletController {
         }
 
         return returnAllAddresses;
+    }
+
+    @PostMapping("/sendtoaddress")
+    public Object sendToAddress(@RequestBody SendRequest body) throws IOException {
+
+        SendRequest newSendRequest = body;
+        String sendToAddress = "bitcoin-cli " + "--testnet " + "sendtoaddress " + newSendRequest.getSendAddress() + " " + newSendRequest.getAmount();
+        String transactionInfo = "";
+
+        ProcessBuilder sendTransaction = new ProcessBuilder(sendToAddress.split(" "));
+        Process process = sendTransaction.start();
+
+        Scanner sc = new Scanner(process.getInputStream());
+        System.out.println(sendToAddress);
+
+        while (sc.hasNext()) {
+            transactionInfo += sc.nextLine().toString();
+        }
+
+        return transactionInfo;
     }
 
 }

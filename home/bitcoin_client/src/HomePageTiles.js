@@ -2,7 +2,7 @@ import {Grid, Paper} from "@mui/material";
 import {GetBalance} from "./GetBalance";
 import React, {useState} from "react";
 import {GetAddressBook} from "./GetAddressBook";
-import {GetTestnetCoins} from "./GetTestnetCoins";
+import {SendFunds} from "./SendFunds";
 
 
 export const HomePageTiles = ({ walletBalance, addressBook }) => {
@@ -25,7 +25,7 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
                         <Paper elevation={24}
                                sx={{
                                    height: '100%',
-                                   width: 500,
+                                   width: 520,
                                    boxShadow: 3,
                                    backgroundColor: (theme) =>
                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -38,7 +38,7 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
                         <Paper elevation={24}
                             sx={{
                                 height: '95%',
-                                width: 500,
+                                width: 520,
                                 boxShadow: 3,
                                 backgroundColor: (theme) =>
                                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -51,13 +51,13 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
                         <Paper
                             sx={{
                                 height: '94%',
-                                width: 500,
+                                width: 520,
                                 boxShadow: 3,
                                 marginBottom: 4,
                                 backgroundColor: (theme) =>
                                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                             }}>
-                            <GetTestnetCoins/>
+                            <SendFunds/>
                         </Paper>
                     </Grid>
                 </Grid>

@@ -3,7 +3,10 @@ import HomePageAppBar from "./HomePageAppBar";
 import {HomePageTiles} from "./HomePageTiles";
 
 
+
+
 export const HomePage = ({walletBalance, addressBook}) => {
+
 
 
     return (

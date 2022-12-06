@@ -1,5 +1,4 @@
 import {
-    Accordion,
     Divider,
     Paper, Stack,
     Table,
@@ -32,7 +31,6 @@ export const GetAddressBook = ({addressBook}) => {
             transactionObject.push(transaction)
         })
         setSelectedAddressTransactions(transactionObject)
-        console.log(selectedAddressTransactions)
     }
 
     const Item = styled(Paper)(({theme}) => ({
@@ -43,7 +41,6 @@ export const GetAddressBook = ({addressBook}) => {
         color: theme.palette.text.secondary,
     }));
 
-    console.log(addressBook)
 
     return (
         <>
