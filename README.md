@@ -15,8 +15,16 @@ To login to the container:
 
     docker exec -it bitcoind bash
     
-    *** If you login to the container immediately after starting it, you will see the
-    JDK and NPM being downloaded.
+        The bitcoind container sometimes doesn't load the interactive terminal. Just press CTRL+c
+        and it should break out of the running process and into the shell. 
+    
+To Start the backend:  
+
+    cd backend/ && ./gradlew bootRun
+    
+To start the frontend:
+
+    cd bitcoin_client && npm start
 ```
 
 
