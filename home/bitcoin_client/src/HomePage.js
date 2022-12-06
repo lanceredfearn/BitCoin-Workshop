@@ -1,17 +1,15 @@
 import React from "react";
-import HomePageAppBar from "./HomePageAppBar";
 import {HomePageTiles} from "./HomePageTiles";
 
 
 
 
-export const HomePage = ({walletBalance, addressBook}) => {
+export const HomePage = ({walletBalance, addressBook, setIsChainPage, setIsHome, setIsTransactionsPage}) => {
 
 
 
     return (
         <>
-            <HomePageAppBar/>
                 <HomePageTiles walletBalance={walletBalance} addressBook={addressBook}/>
 
         </>

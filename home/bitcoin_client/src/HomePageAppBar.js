@@ -17,13 +17,10 @@ import {CurrencyBitcoin} from "@mui/icons-material";
 const pages = ['Chain', 'Transactions', ''];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function HomePageAppBar() {
+function HomePageAppBar({ setIsChainPage, setIsTransactionsPage, setIsHome }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -35,6 +32,22 @@ function HomePageAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handlePageChange = (page) => {
+        if (page === 'Chain') {
+            setIsHome(false)
+            setIsChainPage(true)
+            setIsTransactionsPage(false)
+        } else if (page === 'Transactions') {
+            setIsHome(false)
+            setIsChainPage(false)
+            setIsTransactionsPage(true)
+        } else {
+            setIsHome(true)
+            setIsChainPage(false)
+            setIsTransactionsPage(false)
+        }
+    }
 
     return (
         <AppBar position="static">
@@ -64,7 +77,6 @@ function HomePageAppBar() {
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
                             color="inherit"
                         >
                             <MenuIcon />
@@ -88,7 +100,7 @@ function HomePageAppBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -117,7 +129,7 @@ function HomePageAppBar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => handlePageChange(page)}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}

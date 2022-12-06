@@ -8,46 +8,21 @@ import {
     TableHead,
     TableRow
 } from "@mui/material";
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {styled} from '@mui/material/styles';
 
-export const GetAddressBook = ({addressBook}) => {
+export const GetAddressBook = ({ addressBook }) => {
 
     const [isViewingAddressProperties, setIsViewingAddressProperties] = useState(false);
     const [selectedAddressProperties, setSelectedAddressProperties] = useState();
-    const [selectedAddressTransactions, setSelectedAddressTransactions] = useState([]);
 
-    let lastThreeTransations = []
-
-    const getLastThreeTransactions = () => {
-
-        selectedAddressProperties.txids.map((tx) => {
-            lastThreeTransations.push(tx)
-        })
-
-        return lastThreeTransations.slice(-3)
-    }
 
     const showAddressProperties = (click, address) => {
         setIsViewingAddressProperties(click)
         setSelectedAddressProperties(address)
-        getTransactionsIds(address)
     }
-
-    const getTransactionsIds = (address) => {
-        const transactionObject = []
-        address.txids.map((transaction, index) => {
-            transactionObject.push(transaction)
-        })
-        setSelectedAddressTransactions(transactionObject)
-    }
-
-    useEffect(() => {
-        selectedAddressProperties &&
-        getLastThreeTransactions()
-    }, [selectedAddressProperties])
 
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

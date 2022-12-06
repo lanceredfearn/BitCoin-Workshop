@@ -27,14 +27,6 @@ export const SendFunds = () => {
         justifyContent: 'center'
     }
 
-    const handleAddressChange = (event) => {
-        setSendRequest({...sendRequest, sendAddress: event.target.value})
-    };
-
-    const handleAmountChange = (event) => {
-        setSendRequest({...sendRequest, amount: event.target.value})
-    }
-
     const handleFaucetChange = (event) => {
         setSendRequest({...sendRequest, sendAddress: event.target.value})
     }
@@ -90,7 +82,7 @@ export const SendFunds = () => {
                     <TextField type="text"
                                id="message"
                                name="message"
-                               label='Amount in Sats'
+                               label='Amount (ex. 0.00001)'
                                onChange={(event) => setSendRequest({...sendRequest, amount: event.target.value})}
                                value={sendRequest.amount}>
                     </TextField>

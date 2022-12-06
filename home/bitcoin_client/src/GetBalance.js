@@ -22,44 +22,26 @@ import {CardValues} from "./CardValues";
 // }
 
 
-export const GetBalance = ({walletBalance, isClicked}) => {
+export const GetBalance = ({walletBalance}) => {
 
 
     return (
         <>
-            {!isClicked ?
-                <>
-                    <Typography sx={{
-                        mr: 2,
-                        display: {xs: 'none', md: 'flex'},
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        color: 'inherit',
-                        textDecoration: 'none',
-                        justifyContent: 'center'
-                    }}>
-                        <h1 sx={{textAlign: 'center'}}>
-                            Wallet
-                        </h1>
-                        <Divider/>
-                    </Typography>
-                    <CardValues walletBalance={walletBalance}/>
-                </>
-                :
-                <Typography sx={{
-                    mr: 2,
-                    display: {xs: 'none', md: 'flex'},
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    color: 'inherit',
-                    textDecoration: 'none',
-                    justifyContent: 'center'
-                }}>
-                    <h1>
-                        You clicked me
-                    </h1>
-                    <Divider/>
-                </Typography>}
+            <Typography sx={{
+                mr: 2,
+                display: {xs: 'none', md: 'flex'},
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                color: 'inherit',
+                textDecoration: 'none',
+                justifyContent: 'center'
+            }}>
+                <h1 sx={{textAlign: 'center'}}>
+                    Wallet
+                </h1>
+                <Divider/>
+            </Typography>
+            <CardValues walletBalance={walletBalance}/>
         </>
     )
 }
