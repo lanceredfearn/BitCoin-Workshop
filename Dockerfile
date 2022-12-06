@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM --platform=linux/amd64 debian:bullseye-slim
 
 ## Define build arguments.
 ARG ROOTHOME='/root/home'

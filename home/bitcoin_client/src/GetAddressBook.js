@@ -8,7 +8,7 @@ import {
     TableHead,
     TableRow
 } from "@mui/material";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {styled} from '@mui/material/styles';
@@ -18,6 +18,17 @@ export const GetAddressBook = ({addressBook}) => {
     const [isViewingAddressProperties, setIsViewingAddressProperties] = useState(false);
     const [selectedAddressProperties, setSelectedAddressProperties] = useState();
     const [selectedAddressTransactions, setSelectedAddressTransactions] = useState([]);
+
+    let lastThreeTransations = []
+
+    const getLastThreeTransactions = () => {
+
+        selectedAddressProperties.txids.map((tx) => {
+            lastThreeTransations.push(tx)
+        })
+
+        return lastThreeTransations.slice(-3)
+    }
 
     const showAddressProperties = (click, address) => {
         setIsViewingAddressProperties(click)
@@ -32,6 +43,11 @@ export const GetAddressBook = ({addressBook}) => {
         })
         setSelectedAddressTransactions(transactionObject)
     }
+
+    useEffect(() => {
+        selectedAddressProperties &&
+        getLastThreeTransactions()
+    }, [selectedAddressProperties])
 
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -81,13 +97,12 @@ export const GetAddressBook = ({addressBook}) => {
             </TableContainer>
             {isViewingAddressProperties ?
                 <>
-                    <Divider sx={{marginTop: 1}}><b>{selectedAddressProperties.address}</b></Divider>
+                    <Divider sx={{marginTop: 2, marginBottom: 1}}><b>{selectedAddressProperties.address}</b></Divider>
                     <Box sx={{width: '100%'}}>
                         <Stack spacing={2}>
                             <Item>Confirmations : {selectedAddressProperties.confirmations ? selectedAddressProperties.confirmations : 'None'}</Item>
                             <Item>Label : {selectedAddressProperties.label ? selectedAddressProperties.label : 'None'}</Item>
-                            <Item>Transaction IDs : {selectedAddressProperties.txids.length > 1 ?
-                                selectedAddressProperties.txids.map((tx) => <p>{tx}</p>) : 'None'}</Item>
+                            <Item>Transaction IDs : {selectedAddressProperties.txids.length > 1 ? selectedAddressProperties.txids.slice(-3).map((txid) => <p>{txid}</p> )  : 'None'}</Item>
                         </Stack>
                     </Box>
                 </>
