@@ -101,7 +101,7 @@ export const SendFunds = () => {
             </Grid>
             {confirmation &&
                 <>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={{marginBottom: 4}}>
                         <Table aria-label="simple table" size='small'>
                             <TableHead>
                                 <TableRow>
@@ -118,7 +118,9 @@ export const SendFunds = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Link href={`https://mempool.space/testnet/tx/${confirmation}`}>
+                    <Link
+                        href={`https://mempool.space/testnet/tx/${confirmation}`} sx={{marginLeft: 20}}
+                    >
                         <b>
                             Check it out in Mempool
                         </b>
