@@ -37,7 +37,7 @@ public class TransactionController {
     @PostMapping("/gettransaction")
     public String getTransaction(@RequestBody String txid) throws IOException {
 
-        String getTransaction = getTransactionCmd + " " + txid.substring(0, txid.length() - 2);
+        String getTransaction = getTransactionCmd + " " + txid.substring(0, txid.length() - 1);
         String returnTransaction = "";
 
         ProcessBuilder getBalanceCurl = new ProcessBuilder(getTransaction.split(" "));
