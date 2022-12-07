@@ -1,7 +1,4 @@
 import {Grid, Paper} from "@mui/material";
-import {GetBalance} from "./GetBalance";
-import {GetAddressBook} from "./GetAddressBook";
-import {SendFunds} from "./SendFunds";
 import React from "react";
 import {TransactionListTile} from "./TransactionListTile";
 

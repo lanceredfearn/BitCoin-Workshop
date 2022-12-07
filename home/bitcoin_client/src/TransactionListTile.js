@@ -1,34 +1,71 @@
-export const TransactionListTile = ({ transactionList }) => {
+import {Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 
-    // {
-    //     "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
-    //     "category": "send",
-    //     "amount": -0.00001000,
-    //     "vout": 0,
-    //     "fee": -0.00001470,
-    //     "confirmations": 115,
-    //     "blockhash": "0000000000000004113929cf71587ffbccab94f0b3e9e9b339fa78188cbe6122",
-    //     "blockheight": 2409980,
-    //     "blockindex": 37,
-    //     "blocktime": 1670287592,
-    //     "txid": "de584141481ddb9a9aafd40c8613802dabc5fdd364d64d9c13a64c7c66bd6d0e",
-    //     "walletconflicts": [
-    // ],
-    //     "time": 1670287050,
-    //     "timereceived": 1670287050,
-    //     "bip125-replaceable": "no",
-    //     "abandoned": false
-    // },
+import {TransactionModal} from "./TransactionModal";
 
 
-    console.log(transactionList)
+export const TransactionListTile = ({transactionList}) => {
+    const [open, setOpen] = React.useState(false);
+    let transactionIndex = 0
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
+    const handleOpen = (index) => {
+        setOpen(true)
+        transactionIndex = index
+    }
+
+
 
     return (
-        transactionList.map((transaction) => {
-            return <div>
-                {transaction.address}
-            </div>
-        })
-
+        <>
+            <Typography sx={{
+                mr: 2,
+                display: {xs: 'none', md: 'flex'},
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                color: 'inherit',
+                textDecoration: 'none',
+                justifyContent: 'center'
+            }}>
+                <h1 sx={{textAlign: 'center'}}>
+                    Transactions
+                </h1>
+                <Divider/>
+            </Typography>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table" size='small'>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell sx={{textAlign: 'left'}}><b>Address</b></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {transactionList.map((row, index) => (
+                            <TableRow
+                                key={row.txid}
+                                sx={{borderBottom: 1}}
+                            >
+                                <TableCell component="th" scope="row" onClick={() => handleOpen(index)}>
+                                    {row.txid}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            {open === true ? <TransactionModal open={open} setOpen={setOpen} transactionList={transactionList} transactionIndex={transactionIndex}/> : '' }
+        </>
     )
 }
