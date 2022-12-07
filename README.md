@@ -5,9 +5,12 @@ capable React Application.
 
 ## How to Setup
 
-Before launching your project in workbench, copy your current bitcoind Data folder into the root of the project  
+```diff
+- Before launching your project in workbench, copy your current bitcoind Data folder into the root of the project  
 or download the data folder from the UT Box and copy that into the root of the project.  
 
+- If you use your own data file you will have to change the bitcoin.conf file to your wallet and password. 
+```
 Otherwise, you will have to wait for the chain to update before you will see your transaction information.
 
 
