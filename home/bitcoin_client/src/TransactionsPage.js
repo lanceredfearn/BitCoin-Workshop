@@ -1,6 +1,7 @@
 import {Grid, Paper} from "@mui/material";
 import React from "react";
 import {TransactionListTile} from "./TransactionListTile";
+import {GetTransaction} from "./GetTransaction";
 
 
 export const TransactionsPage = ({ transactionList }) => {
@@ -25,19 +26,20 @@ export const TransactionsPage = ({ transactionList }) => {
                     <Grid key={'item2'} item sx={{height: 'fit-screen', marginBottom: 4}}>
                         <Paper elevation={24}
                                sx={{
-                                   height: '95%',
+                                   height: '100%',
                                    width: 520,
                                    boxShadow: 3,
                                    backgroundColor: (theme) =>
                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                                    justifyItems: 'center'
                                }}>
+                            <GetTransaction/>
                         </Paper>
                     </Grid>
                     <Grid key={'item3'} item sx={{height: 'fit-screen', marginBottom: 4}}>
                         <Paper
                             sx={{
-                                height: '94%',
+                                height: '100%',
                                 width: 520,
                                 boxShadow: 3,
                                 marginBottom: 4,

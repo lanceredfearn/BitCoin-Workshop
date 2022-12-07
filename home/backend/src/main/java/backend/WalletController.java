@@ -73,8 +73,7 @@ public class WalletController {
     @PostMapping("/sendtoaddress")
     public Object sendToAddress(@RequestBody SendRequest body) throws IOException {
 
-        SendRequest newSendRequest = body;
-        String sendToAddress = "bitcoin-cli " + "--testnet " + "sendtoaddress " + newSendRequest.getSendAddress() + " " + newSendRequest.getAmount();
+        String sendToAddress = "bitcoin-cli " + "--testnet " + "sendtoaddress " + body.getSendAddress() + " " + body.getAmount();
         String transactionInfo = "";
 
         ProcessBuilder sendTransaction = new ProcessBuilder(sendToAddress.split(" "));
