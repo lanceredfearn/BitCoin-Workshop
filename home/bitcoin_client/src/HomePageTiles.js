@@ -11,7 +11,7 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
     return (
         <Grid sx={{flexGrow: 1, marginTop: 2, height: 'fit-screen'}} container spacing={2}>
             <Grid item xs={12}>
-                <Grid container justifyContent="center" spacing={4} sx={{backgroundColor: 'gray'}}>
+                <Grid container justifyContent="center" spacing={4} sx={{backgroundColor: 'gray', height: '145%'}}>
                     <Grid key={'item1'} item sx={{height: 'fit-screen', marginBottom: 4}}>
                         <Paper elevation={24}
                                sx={{
@@ -28,7 +28,7 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
                     <Grid key={'item2'} item>
                         <Paper elevation={24}
                             sx={{
-                                height: '95%',
+                                height: '96.5%',
                                 width: 520,
                                 boxShadow: 3,
                                 backgroundColor: (theme) =>
@@ -41,7 +41,7 @@ export const HomePageTiles = ({ walletBalance, addressBook }) => {
                     <Grid key={'item3'} item>
                         <Paper
                             sx={{
-                                height: '94%',
+                                height: '96.5%',
                                 width: 520,
                                 boxShadow: 3,
                                 marginBottom: 4,

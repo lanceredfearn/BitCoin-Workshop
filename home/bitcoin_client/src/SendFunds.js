@@ -37,6 +37,7 @@ export const SendFunds = () => {
             amount: sendRequest.amount
         })
         setConfirmation(result.data)
+        console.log('you clicked submit')
     };
 
     return (

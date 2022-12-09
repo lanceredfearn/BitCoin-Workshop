@@ -15,6 +15,7 @@ public class TransactionController {
 
     String listTransactions = "bitcoin-cli " + "--testnet " + "listtransactions";
     String getTransactionCmd = "bitcoin-cli " + "--testnet " + "gettransaction";
+    String setTransactionFee = "bitcoin-cli " + "--testnet " + "settxfee ";
 
     @PostMapping("/listtransactions")
     public String getTransactionList() throws IOException {
@@ -45,6 +46,25 @@ public class TransactionController {
 
         Scanner sc = new Scanner(process.getInputStream());
         System.out.println(getTransaction);
+
+        while (sc.hasNext()) {
+            returnTransaction += sc.nextLine().toString();
+        }
+
+        return returnTransaction;
+    }
+
+    @PostMapping("/settransactionfee")
+    public String setTransactionFee(@RequestBody String amount) throws IOException {
+
+        String setTransactionFeeUpdated = setTransactionFee + amount.substring(0, amount.length() - 1);
+        String returnTransaction = "";
+
+        ProcessBuilder getBalanceCurl = new ProcessBuilder(setTransactionFeeUpdated.split(" "));
+        Process process = getBalanceCurl.start();
+
+        Scanner sc = new Scanner(process.getInputStream());
+        System.out.println(setTransactionFeeUpdated);
 
         while (sc.hasNext()) {
             returnTransaction += sc.nextLine().toString();
